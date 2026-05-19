@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>肩关节体格检查专家知识库</title>
+    <meta
+      name="description"
+      content="基于肩关节体格检查教材章节，并补充肩关节外科临床决策与循证诊断指标的交互式知识库。"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#overview" aria-label="回到概览">
+        <span class="brand-mark">S</span>
+        <span>
+          <strong>肩关节体格检查</strong>
+          <small>张瑞华医生 Dr. Jason Zhang</small>
+        </span>
+      </a>
+      <nav class="topnav" aria-label="主导航">
+        <a href="#symptoms">症状入口</a>
+        <a href="#regions">解剖区域</a>
+        <a href="#tests">试验卡片</a>
+        <a href="#flows">鉴别流程</a>
+        <a href="#evidence">循证</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="overview" class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Clinical Evaluation of Shoulder Problems</p>
+          <h1>从“疼痛在哪里”走向“哪个结构、哪类病理、下一步怎么决策”。</h1>
+          <p>
+            本工具把肩关节病史、视触诊、ROM、力量、特殊试验、神经血管检查整合为可检索卡片和诊断路径。
+            中文说明为主，英文试验名保留，并加入敏感度、特异度、LR 和专家提醒。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#tests">进入试验卡片</a>
+            <a class="button ghost" href="#flows">查看鉴别流程</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="肩关节检查结构图">
+          <img src="assets/shoulder-map.svg" alt="肩关节检查解剖区域示意图" />
+        </div>
+      </section>
+
+      <section class="tool-strip" aria-label="快速工具">
+        <label class="searchbox">
+          <span>搜索</span>
+          <input id="searchInput" type="search" placeholder="例如：apprehension、肩胛下肌、夜痛、SLAP" />
+        </label>
+        <label>
+          <span>解剖区域</span>
+          <select id="regionFilter">
+            <option value="all">全部区域</option>
+          </select>
+        </label>
+        <label>
+          <span>临床目标</span>
+          <select id="targetFilter">
+            <option value="all">全部目标</option>
+          </select>
+        </label>
+        <button id="resetFilters" class="icon-button" type="button" title="重置筛选" aria-label="重置筛选">↺</button>
+      </section>
+
+      <section id="symptoms" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Symptom-Based Entry</p>
+          <h2>症状入口</h2>
+        </div>
+        <div class="matrix" id="symptomMatrix"></div>
+      </section>
+
+      <section id="regions" class="section tint">
+        <div class="section-head">
+          <p class="eyebrow">Anatomy-Based Entry</p>
+          <h2>解剖区域</h2>
+        </div>
+        <div class="region-grid" id="regionGrid"></div>
+      </section>
+
+      <section id="tests" class="section">
+        <div class="section-head inline">
+          <div>
+            <p class="eyebrow">Exam Cards</p>
+            <h2>体征 / 特殊试验卡片</h2>
+          </div>
+          <span id="resultCount" class="pill">0 项</span>
+        </div>
+        <div class="card-grid" id="testCards"></div>
+      </section>
+
+      <section id="flows" class="section tint">
+        <div class="section-head">
+          <p class="eyebrow">Decision Flow</p>
+          <h2>鉴别诊断流程图</h2>
+        </div>
+        <div class="flow-layout">
+          <div class="flow-panel">
+            <h3>肩痛初诊路径</h3>
+            <img src="assets/exam-flow.svg" alt="肩痛初诊鉴别流程" />
+          </div>
+          <div class="flow-panel">
+            <h3>专家查房顺序</h3>
+            <ol class="round-list">
+              <li><strong>先问功能目标：</strong>痛点不等于病因，先明确患者被限制的动作。</li>
+              <li><strong>先看主动，再看被动：</strong>主动受限而被动基本保留，优先考虑肩袖/疼痛抑制；二者均受限，考虑冻结肩或关节病变。</li>
+              <li><strong>先排颈源和神经：</strong>麻木、放射至肘下、反射或肌力节段异常时，不把肩 MRI 当作唯一解释。</li>
+              <li><strong>特殊试验成组解释：</strong>单个试验很少足以定性，组合、年龄、外伤机制和影像一致时才提高诊断信心。</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section id="evidence" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Evidence Translation</p>
+          <h2>临床证据解释器</h2>
+        </div>
+        <div class="evidence-layout">
+          <div class="calculator">
+            <h3>选择试验，代入临床情境</h3>
+            <div class="evidence-controls">
+              <label>
+                <span>解剖区域</span>
+                <select id="evidenceRegionSelect">
+                  <option value="all">全部区域</option>
+                </select>
+              </label>
+              <label>
+                <span>具体试验</span>
+                <select id="evidenceTestSelect"></select>
+              </label>
+            </div>
+            <label>
+              <span>临床情境</span>
+              <select id="scenarioSelect">
+                <option value="15">低怀疑：症状不典型 / 影像可能偶然发现</option>
+                <option value="35" selected>中等怀疑：病史与查体部分吻合</option>
+                <option value="65">高怀疑：典型病史 + 年龄/机制吻合</option>
+              </select>
+            </label>
+            <label>
+              <span>检查前概率微调</span>
+              <input id="preProb" type="range" min="1" max="95" value="35" />
+            </label>
+            <output id="preProbLabel">35%</output>
+            <div class="metric-grid">
+              <div>
+                <small>阳性推动力</small>
+                <strong id="positiveStrength">中等</strong>
+              </div>
+              <div>
+                <small>阴性排除力</small>
+                <strong id="negativeStrength">有限</strong>
+              </div>
+              <div>
+                <small>证据口径</small>
+                <strong id="evidenceGrade">适合成组使用</strong>
+              </div>
+            </div>
+            <div class="prob-grid">
+              <div>
+                <small>阳性后概率</small>
+                <strong id="postPositive">61%</strong>
+              </div>
+              <div>
+                <small>阴性后概率</small>
+                <strong id="postNegative">13%</strong>
+              </div>
+            </div>
+            <p id="evidenceAdvice" class="clinical-advice"></p>
+          </div>
+          <div class="evidence-note">
+            <h3>更贴近临床的读法</h3>
+            <p>
+              不先估计“验前概率”，LR 很容易变成纸面数字。这里把患者先放进低、中、高怀疑情境，再看某个试验阳性或阴性会不会真正改变下一步：继续查体成组验证、安排影像、做定位注射，还是回到颈源/神经/关节源重新分层。
+            </p>
+            <p>
+              LR 可以简单理解为“这个结果让诊断怀疑度移动多少”。本页不要求你手算 LR，只把它转成更直观的阳性后概率、阴性后概率，以及“阳性推动力 / 阴性排除力”。
+            </p>
+            <div class="source-list">
+              <a href="https://bmcmusculoskeletdisord.biomedcentral.com/articles/10.1186/s12891-017-1400-0">Gismervik 2017 systematic review</a>
+              <a href="https://jamaevidence.mhmedical.com/content.aspx?Sectionid=68722705&bookid=845">JAMA Rational Clinical Examination: Rotator Cuff</a>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/23850309/">van Kampen 2013 anterior instability</a>
+              <a href="https://journals.sagepub.com/doi/10.1177/23259671211042011">Lädermann 2021 subscapularis meta-analysis</a>
+              <a href="https://journals.sagepub.com/doi/10.1177/03635465221100977">Dean 2023 SLAP meta-analysis</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>张瑞华医生 Dr. Jason Zhang</p>
+      <p>用于专业学习和临床思维训练，不能替代完整病史、体格检查、影像评估和本地医疗规范。</p>
+    </footer>
+
+    <dialog id="testDialog" class="dialog">
+      <button class="close" type="button" aria-label="关闭">×</button>
+      <article id="dialogContent"></article>
+    </dialog>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>

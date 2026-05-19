@@ -1,0 +1,1648 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>肩关节体格检查专家知识库</title>
+    <meta
+      name="description"
+      content="基于肩关节体格检查教材章节，并补充肩关节外科临床决策与循证诊断指标的交互式知识库。"
+    />
+    <style>
+:root {
+  --ink: #14211f;
+  --muted: #5e6c67;
+  --line: #d8e0db;
+  --paper: #fbfcf8;
+  --panel: #ffffff;
+  --mist: #eef4ef;
+  --sage: #4f7669;
+  --teal: #0f766e;
+  --copper: #b35f2f;
+  --gold: #d8a735;
+  --blue: #2e6f9e;
+  --shadow: 0 18px 50px rgba(20, 33, 31, 0.12);
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px clamp(16px, 4vw, 48px);
+  border-bottom: 1px solid rgba(216, 224, 219, 0.85);
+  background: rgba(251, 252, 248, 0.94);
+  backdrop-filter: blur(16px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--teal);
+  color: #fff;
+  font-weight: 800;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.topnav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.topnav a,
+.button,
+.icon-button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  text-decoration: none;
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.topnav a {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  padding: clamp(32px, 6vw, 76px) clamp(16px, 4vw, 48px) 32px;
+  min-height: calc(100vh - 64px);
+}
+
+.hero-copy {
+  max-width: 760px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--copper);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.18;
+}
+
+h1 {
+  font-size: clamp(34px, 6vw, 68px);
+  max-width: 900px;
+}
+
+h2 {
+  font-size: clamp(26px, 4vw, 42px);
+}
+
+h3 {
+  font-size: 19px;
+}
+
+.hero p:not(.eyebrow) {
+  max-width: 720px;
+  color: var(--muted);
+  font-size: clamp(16px, 2.2vw, 20px);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.button,
+.icon-button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.button.primary {
+  border-color: var(--teal);
+  background: var(--teal);
+  color: white;
+}
+
+.button.ghost {
+  background: transparent;
+}
+
+.hero-visual {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.tool-strip {
+  position: sticky;
+  top: 64px;
+  z-index: 15;
+  display: grid;
+  grid-template-columns: 1fr 220px 220px 48px;
+  gap: 10px;
+  padding: 14px clamp(16px, 4vw, 48px);
+  border-block: 1px solid var(--line);
+  background: rgba(238, 244, 239, 0.95);
+  backdrop-filter: blur(16px);
+}
+
+label span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+input,
+select {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  padding: 9px 12px;
+}
+
+.section {
+  padding: clamp(36px, 7vw, 84px) clamp(16px, 4vw, 48px);
+}
+
+.section.tint {
+  background: var(--mist);
+}
+
+.section-head {
+  max-width: 980px;
+  margin-bottom: 22px;
+}
+
+.section-head.inline {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+button.pill,
+summary.pill {
+  cursor: pointer;
+}
+
+summary.pill {
+  width: fit-content;
+  list-style: none;
+}
+
+summary.pill::-webkit-details-marker {
+  display: none;
+}
+
+.matrix,
+.region-grid,
+.card-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.matrix {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.region-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.info-card,
+.region-card,
+.test-card,
+.flow-panel,
+.calculator,
+.evidence-note {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 8px 28px rgba(20, 33, 31, 0.06);
+}
+
+.info-card,
+.region-card,
+.test-card {
+  padding: 18px;
+}
+
+.region-card {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.info-card p,
+.region-card p,
+.test-card p,
+.evidence-note p,
+.round-list {
+  color: var(--muted);
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #edf7f4;
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.region-tests {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.region-test-list {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0 0;
+}
+
+.region-test-button {
+  display: grid;
+  width: 100%;
+  gap: 2px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcf8;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.region-test-button small {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.test-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.test-card header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.test-card h3 {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.score {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.score div {
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcf8;
+}
+
+.score small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.score strong {
+  display: block;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.card-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.mini-button {
+  flex: 1;
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 760;
+}
+
+.mini-button.secondary {
+  background: #fff;
+  color: var(--ink);
+}
+
+.flow-layout,
+.evidence-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 16px;
+}
+
+.flow-panel,
+.calculator,
+.evidence-note {
+  padding: 18px;
+}
+
+.flow-panel img {
+  margin-top: 14px;
+}
+
+.round-list {
+  padding-left: 20px;
+}
+
+.round-list li + li {
+  margin-top: 10px;
+}
+
+.calculator {
+  display: grid;
+  gap: 12px;
+}
+
+.calculator output {
+  font-weight: 850;
+  color: var(--teal);
+}
+
+.clinical-advice {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcf8;
+  color: var(--ink);
+  font-weight: 720;
+}
+
+.evidence-controls,
+.prob-grid,
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.metric-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.prob-grid div,
+.metric-grid div {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--mist);
+}
+
+.prob-grid small,
+.prob-grid strong,
+.metric-grid small,
+.metric-grid strong {
+  display: block;
+}
+
+.prob-grid strong {
+  font-size: 30px;
+}
+
+.metric-grid strong {
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+
+.source-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.source-list a {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.footer {
+  padding: 28px clamp(16px, 4vw, 48px);
+  border-top: 1px solid var(--line);
+  background: var(--ink);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.footer p {
+  margin: 4px 0;
+  max-width: 1100px;
+}
+
+.dialog {
+  width: min(920px, calc(100vw - 28px));
+  max-height: min(840px, calc(100vh - 28px));
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.dialog::backdrop {
+  background: rgba(20, 33, 31, 0.48);
+}
+
+.close {
+  position: sticky;
+  top: 0;
+  float: right;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  background: var(--ink);
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.dialog article {
+  padding: 24px;
+}
+
+.dialog-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.step-list,
+.expert-list {
+  padding-left: 20px;
+}
+
+.step-list li,
+.expert-list li {
+  margin-bottom: 8px;
+}
+
+.evidence-badge {
+  display: inline-flex;
+  margin-top: 6px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: #fff4de;
+  color: #7a4a00;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 28px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  text-align: center;
+  color: var(--muted);
+}
+
+@media (max-width: 1060px) {
+  .matrix,
+  .region-grid,
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tool-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero,
+  .flow-layout,
+  .evidence-layout,
+  .dialog-grid,
+  .evidence-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .tool-strip {
+    position: static;
+    grid-template-columns: 1fr;
+  }
+
+  .matrix,
+  .region-grid,
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .score {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#overview" aria-label="回到概览">
+        <span class="brand-mark">S</span>
+        <span>
+          <strong>肩关节体格检查</strong>
+          <small>张瑞华医生 Dr. Jason Zhang</small>
+        </span>
+      </a>
+      <nav class="topnav" aria-label="主导航">
+        <a href="#symptoms">症状入口</a>
+        <a href="#regions">解剖区域</a>
+        <a href="#tests">试验卡片</a>
+        <a href="#flows">鉴别流程</a>
+        <a href="#evidence">循证</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="overview" class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Clinical Evaluation of Shoulder Problems</p>
+          <h1>从“疼痛在哪里”走向“哪个结构、哪类病理、下一步怎么决策”。</h1>
+          <p>
+            本工具把肩关节病史、视触诊、ROM、力量、特殊试验、神经血管检查整合为可检索卡片和诊断路径。
+            中文说明为主，英文试验名保留，并加入敏感度、特异度、LR 和专家提醒。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#tests">进入试验卡片</a>
+            <a class="button ghost" href="#flows">查看鉴别流程</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="肩关节检查结构图">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNjgwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUgZGVzYyI+CiAgPHRpdGxlIGlkPSJ0aXRsZSI+6IKp5YWz6IqC5qOA5p+l6Kej5YmW5Yy65Z+f56S65oSP5Zu+PC90aXRsZT4KICA8ZGVzYyBpZD0iZGVzYyI+56S65oSP6IKp6KKW44CB55uC5ZSH5LiN56iz44CB6IKx5LqM5aS06IKM6ZW/5aS044CB6IKp6ZSB5YWz6IqC44CB6IKp6IOb6IO45buT5ZKM6aKI5rqQ5oCn55a855eb55qE5qOA5p+l5YWl5Y+j44CCPC9kZXNjPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJiZyIgeDE9IjAiIHgyPSIxIiB5MT0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmN2ZiZjciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZThmMWVmIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0ic2hhZG93IiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjEyIiBzdGREZXZpYXRpb249IjE2IiBmbG9vZC1jb2xvcj0iIzE0MjExZiIgZmxvb2Qtb3BhY2l0eT0iLjE2Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjkwMCIgaGVpZ2h0PSI2ODAiIGZpbGw9InVybCgjYmcpIi8+CiAgPGcgZmlsdGVyPSJ1cmwoI3NoYWRvdykiPgogICAgPHBhdGggZD0iTTM2NiA4NmM3MiAwIDEyNiA0NSAxMzggMTEzIDYgMzQgNCA3NyAzIDEyNyAwIDQ3IDEzIDcwIDQ4IDkwIDI4IDE2IDUyIDM4IDYyIDY4IDEzIDQwLTQgODQtMzkgMTAzLTMxIDE3LTcyIDctMTAxLTIwLTQzLTQxLTY2LTEwMy03NC0xNzEtNC0zMy04LTU4LTIzLTc0LTE4LTIwLTQ5LTE5LTc1LTEyLTYzIDE3LTEyMy04LTE0OS02Mi0yNS01My0xMC0xMTMgMzYtMTQ0IDQyLTI5IDExMi0xOCAxNzQtMTh6IiBmaWxsPSIjZmZmIi8+CiAgPC9nPgogIDxwYXRoIGQ9Ik0zMjAgMTgxYy00NSAxOC03NiA1OC03NiAxMDQgMCA2NyA2NSAxMjIgMTQ0IDEyMnMxNDQtNTUgMTQ0LTEyMi02NS0xMjItMTQ0LTEyMmMtMjQgMC00NyA2LTY4IDE4eiIgZmlsbD0iI2RiZTdlMiIgc3Ryb2tlPSIjNGY3NjY5IiBzdHJva2Utd2lkdGg9IjQiLz4KICA8ZWxsaXBzZSBjeD0iMzkxIiBjeT0iMjg2IiByeD0iODciIHJ5PSI4NiIgZmlsbD0iI2Y5ZmJmOCIgc3Ryb2tlPSIjMGY3NjZlIiBzdHJva2Utd2lkdGg9IjUiLz4KICA8Y2lyY2xlIGN4PSIzOTIiIGN5PSIyODYiIHI9IjQ1IiBmaWxsPSIjZDhhNzM1IiBvcGFjaXR5PSIuMzIiLz4KICA8cGF0aCBkPSJNMzcxIDIwNWMtMTAgMzctMTggODctNyAxMzkgNyAzMiAyNCA2NCA1MyA5NyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYjM1ZjJmIiBzdHJva2Utd2lkdGg9IjE4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii44MiIvPgogIDxwYXRoIGQ9Ik0yNjMgMjc5Yy00NyAxOC04OCA0Ny0xMjQgODQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzJlNmY5ZSIgc3Ryb2tlLXdpZHRoPSIyMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTUyMCAyNDljNjQtMjIgMTI5LTE2IDE5MiAxOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMGY3NjZlIiBzdHJva2Utd2lkdGg9IjIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNNDY2IDE4MmMyNS00MiA2Ni02OCAxMjMtNzIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2IzNWYyZiIgc3Ryb2tlLXdpZHRoPSIxOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTI4NCA0MjhjLTMwIDQ4LTU0IDk2LTcwIDE0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGY3NjY5IiBzdHJva2Utd2lkdGg9IjE4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8ZyBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxCbGlua01hY1N5c3RlbUZvbnQsJ1NlZ29lIFVJJywnUGluZ0ZhbmcgU0MnLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiPgogICAgPGc+CiAgICAgIDxyZWN0IHg9IjUyIiB5PSI3MCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSI2NCIgcng9IjgiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2Q4ZTBkYiIvPgogICAgICA8Y2lyY2xlIGN4PSI4NCIgY3k9IjEwMiIgcj0iMTAiIGZpbGw9IiNiMzVmMmYiLz4KICAgICAgPHRleHQgeD0iMTA0IiB5PSIxMTAiIGZpbGw9IiMxNDIxMWYiPuiCqeiilu+8muWKm+mHj+S4jueWvOeXm+W8pzwvdGV4dD4KICAgIDwvZz4KICAgIDxnPgogICAgICA8cmVjdCB4PSI1NjAiIHk9IjcwIiB3aWR0aD0iMjg0IiBoZWlnaHQ9IjY0IiByeD0iOCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjZDhlMGRiIi8+CiAgICAgIDxjaXJjbGUgY3g9IjU5MiIgY3k9IjEwMiIgcj0iMTAiIGZpbGw9IiMwZjc2NmUiLz4KICAgICAgPHRleHQgeD0iNjEyIiB5PSIxMTAiIGZpbGw9IiMxNDIxMWYiPuS4jeeosy/nm4LllIfvvJrmgZDmg6fmhJ88L3RleHQ+CiAgICA8L2c+CiAgICA8Zz4KICAgICAgPHJlY3QgeD0iNTIiIHk9IjUwNCIgd2lkdGg9IjI4NiIgaGVpZ2h0PSI2NCIgcng9IjgiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2Q4ZTBkYiIvPgogICAgICA8Y2lyY2xlIGN4PSI4NCIgY3k9IjUzNiIgcj0iMTAiIGZpbGw9IiMyZTZmOWUiLz4KICAgICAgPHRleHQgeD0iMTA0IiB5PSI1NDQiIGZpbGw9IiMxNDIxMWYiPuiCseS6jOWktOiCjO+8muayn+eXmy9TTEFQPC90ZXh0PgogICAgPC9nPgogICAgPGc+CiAgICAgIDxyZWN0IHg9IjU1OCIgeT0iNTA0IiB3aWR0aD0iMjg2IiBoZWlnaHQ9IjY0IiByeD0iOCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjZDhlMGRiIi8+CiAgICAgIDxjaXJjbGUgY3g9IjU5MCIgY3k9IjUzNiIgcj0iMTAiIGZpbGw9IiM0Zjc2NjkiLz4KICAgICAgPHRleHQgeD0iNjEwIiB5PSI1NDQiIGZpbGw9IiMxNDIxMWYiPuiCqeiDmy/poojnpZ7nu4/vvJrku6Plgb88L3RleHQ+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4K" alt="肩关节检查解剖区域示意图" />
+        </div>
+      </section>
+
+      <section class="tool-strip" aria-label="快速工具">
+        <label class="searchbox">
+          <span>搜索</span>
+          <input id="searchInput" type="search" placeholder="例如：apprehension、肩胛下肌、夜痛、SLAP" />
+        </label>
+        <label>
+          <span>解剖区域</span>
+          <select id="regionFilter">
+            <option value="all">全部区域</option>
+          </select>
+        </label>
+        <label>
+          <span>临床目标</span>
+          <select id="targetFilter">
+            <option value="all">全部目标</option>
+          </select>
+        </label>
+        <button id="resetFilters" class="icon-button" type="button" title="重置筛选" aria-label="重置筛选">↺</button>
+      </section>
+
+      <section id="symptoms" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Symptom-Based Entry</p>
+          <h2>症状入口</h2>
+        </div>
+        <div class="matrix" id="symptomMatrix"></div>
+      </section>
+
+      <section id="regions" class="section tint">
+        <div class="section-head">
+          <p class="eyebrow">Anatomy-Based Entry</p>
+          <h2>解剖区域</h2>
+        </div>
+        <div class="region-grid" id="regionGrid"></div>
+      </section>
+
+      <section id="tests" class="section">
+        <div class="section-head inline">
+          <div>
+            <p class="eyebrow">Exam Cards</p>
+            <h2>体征 / 特殊试验卡片</h2>
+          </div>
+          <span id="resultCount" class="pill">0 项</span>
+        </div>
+        <div class="card-grid" id="testCards"></div>
+      </section>
+
+      <section id="flows" class="section tint">
+        <div class="section-head">
+          <p class="eyebrow">Decision Flow</p>
+          <h2>鉴别诊断流程图</h2>
+        </div>
+        <div class="flow-layout">
+          <div class="flow-panel">
+            <h3>肩痛初诊路径</h3>
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDgwIDcyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InRpdGxlIGRlc2MiPgogIDx0aXRsZSBpZD0idGl0bGUiPuiCqeeXm+WIneiviumJtOWIq+a1geeoi+WbvjwvdGl0bGU+CiAgPGRlc2MgaWQ9ImRlc2MiPuS7jue6ouaXl+OAgemiiOa6kOOAgeS4u+WKqOiiq+WKqOa0u+WKqOW6puOAgeWKm+mHj+OAgeS4jeeos+WSjOWxgOmDqOWOi+eXm+i/m+WFpeiCqeWFs+iKguS9k+agvOajgOafpei3r+W+hOOAgjwvZGVzYz4KICA8cmVjdCB3aWR0aD0iMTA4MCIgaGVpZ2h0PSI3MjAiIGZpbGw9IiNmYmZjZjgiLz4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFycm93IiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjgiIG9yaWVudD0iYXV0by1zdGFydC1yZXZlcnNlIj4KICAgICAgPHBhdGggZD0iTTAgMGwxMCA1LTEwIDV6IiBmaWxsPSIjNGY3NjY5Ii8+CiAgICA8L21hcmtlcj4KICAgIDxzdHlsZT4KICAgICAgLmJveHtmaWxsOiNmZmY7c3Ryb2tlOiNkOGUwZGI7c3Ryb2tlLXdpZHRoOjJ9CiAgICAgIC5rZXl7ZmlsbDojMGY3NjZlO3N0cm9rZTojMGY3NjZlfQogICAgICAud2FybntmaWxsOiNmZmY0ZGU7c3Ryb2tlOiNkOGE3MzV9CiAgICAgIC5saW5le3N0cm9rZTojNGY3NjY5O3N0cm9rZS13aWR0aDozO2ZpbGw6bm9uZTttYXJrZXItZW5kOnVybCgjYXJyb3cpfQogICAgICAudHtmb250LWZhbWlseTotYXBwbGUtc3lzdGVtLEJsaW5rTWFjU3lzdGVtRm9udCwnU2Vnb2UgVUknLCdQaW5nRmFuZyBTQycsc2Fucy1zZXJpZjtmaWxsOiMxNDIxMWZ9CiAgICAgIC5oe2ZvbnQtd2VpZ2h0OjgwMDtmb250LXNpemU6MjRweH0KICAgICAgLnB7Zm9udC1zaXplOjE4cHh9CiAgICAgIC53e2ZvbnQtc2l6ZToxN3B4O2ZpbGw6IzVlNmM2N30KICAgICAgLndoaXRle2ZpbGw6I2ZmZn0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxyZWN0IGNsYXNzPSJrZXkiIHg9IjM4OCIgeT0iMzQiIHdpZHRoPSIzMDQiIGhlaWdodD0iNzQiIHJ4PSI4Ii8+CiAgPHRleHQgY2xhc3M9InQgaCB3aGl0ZSIgeD0iNTQwIiB5PSI3OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+6IKp55ebIC8g5peg5YqbIC8g5LiN56izPC90ZXh0PgogIDxwYXRoIGNsYXNzPSJsaW5lIiBkPSJNNTQwIDEwOHY0NCIvPgogIDxyZWN0IGNsYXNzPSJ3YXJuIiB4PSIzNDAiIHk9IjE1MiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI4MiIgcng9IjgiLz4KICA8dGV4dCBjbGFzcz0idCBoIiB4PSI1NDAiIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5YWI5o6S57qi5peXPC90ZXh0PgogIDx0ZXh0IGNsYXNzPSJ0IHciIHg9IjU0MCIgeT0iMjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7mhJ/mn5PjgIHogr/nmKTjgIHpqqjmipjjgIHmgKXmgKfnpZ7nu4/ooYDnrqHmjZ/kvKQ8L3RleHQ+CiAgPHBhdGggY2xhc3M9ImxpbmUiIGQ9Ik01NDAgMjM0djQ0Ii8+CiAgPHJlY3QgY2xhc3M9ImJveCIgeD0iMzQwIiB5PSIyNzgiIHdpZHRoPSI0MDAiIGhlaWdodD0iODIiIHJ4PSI4Ii8+CiAgPHRleHQgY2xhc3M9InQgaCIgeD0iNTQwIiB5PSIzMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPumiiOa6kOaIluelnue7j++8nzwvdGV4dD4KICA8dGV4dCBjbGFzcz0idCB3IiB4PSI1NDAiIHk9IjM0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5pS+5bCE6Iez6IKY5LiL44CB5oSf6KeJL+WPjeWwhOiKguauteW8guW4uOOAgVNwdXJsaW5nPC90ZXh0PgogIDxwYXRoIGNsYXNzPSJsaW5lIiBkPSJNMzQwIDMxOUgxNzZ2NzAiLz4KICA8cGF0aCBjbGFzcz0ibGluZSIgZD0iTTc0MCAzMTloMTY0djcwIi8+CiAgPHJlY3QgY2xhc3M9ImJveCIgeD0iMzYiIHk9IjM4OSIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIxMDYiIHJ4PSI4Ii8+CiAgPHRleHQgY2xhc3M9InQgaCIgeD0iMTc2IiB5PSI0MjciIHRleHQtYW5jaG9yPSJtaWRkbGUiPuS4u+WKqOKGkyDooqvliqjiiYjmraPluLg8L3RleHQ+CiAgPHRleHQgY2xhc3M9InQgcCIgeD0iMTc2IiB5PSI0NTciIHRleHQtYW5jaG9yPSJtaWRkbGUiPuiCqeiiliAvIOeWvOeXm+aKkeWItjwvdGV4dD4KICA8dGV4dCBjbGFzcz0idCB3IiB4PSIxNzYiIHk9IjQ4MiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RVIgbGFn44CBZHJvcCBhcm3jgIFwYWluZnVsIGFyYzwvdGV4dD4KICA8cmVjdCBjbGFzcz0iYm94IiB4PSI0MDAiIHk9IjM4OSIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIxMDYiIHJ4PSI4Ii8+CiAgPHRleHQgY2xhc3M9InQgaCIgeD0iNTQwIiB5PSI0MjciIHRleHQtYW5jaG9yPSJtaWRkbGUiPuS4u+WKqOKGkyDooqvliqjihpM8L3RleHQ+CiAgPHRleHQgY2xhc3M9InQgcCIgeD0iNTQwIiB5PSI0NTciIHRleHQtYW5jaG9yPSJtaWRkbGUiPuWGu+e7k+iCqSAvIOWFs+iKgueCjjwvdGV4dD4KICA8dGV4dCBjbGFzcz0idCB3IiB4PSI1NDAiIHk9IjQ4MiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5aSW5peL5Y+X6ZmQ44CB6aqo5pOm5oSf44CBWCDnur/kvJjlhYg8L3RleHQ+CiAgPHJlY3QgY2xhc3M9ImJveCIgeD0iNzY0IiB5PSIzODkiIHdpZHRoPSIyODAiIGhlaWdodD0iMTA2IiByeD0iOCIvPgogIDx0ZXh0IGNsYXNzPSJ0IGgiIHg9IjkwNCIgeT0iNDI3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7mgZDmg6fmhJ8gLyDmu5HohLHmhJ88L3RleHQ+CiAgPHRleHQgY2xhc3M9InQgcCIgeD0iOTA0IiB5PSI0NTciIHRleHQtYW5jaG9yPSJtaWRkbGUiPuS4jeeosyAvIOebguWUhzwvdGV4dD4KICA8dGV4dCBjbGFzcz0idCB3IiB4PSI5MDQiIHk9IjQ4MiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+YXBwcmVoZW5zaW9u44CBcmVsb2NhdGlvbuOAgWplcms8L3RleHQ+CiAgPHBhdGggY2xhc3M9ImxpbmUiIGQ9Ik0xNzYgNDk1djY2Ii8+CiAgPHBhdGggY2xhc3M9ImxpbmUiIGQ9Ik01NDAgNDk1djY2Ii8+CiAgPHBhdGggY2xhc3M9ImxpbmUiIGQ9Ik05MDQgNDk1djY2Ii8+CiAgPHJlY3QgY2xhc3M9ImJveCIgeD0iMzYiIHk9IjU2MSIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIxMDAiIHJ4PSI4Ii8+CiAgPHRleHQgY2xhc3M9InQgcCIgeD0iMTc2IiB5PSI1OTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuaIkOe7hOivlemqjCArIOW5tOm+hCArIOWkluS8pOacuuWItjwvdGV4dD4KICA8dGV4dCBjbGFzcz0idCB3IiB4PSIxNzYiIHk9IjYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5b+F6KaB5pe26LaF5aOwL01SSTwvdGV4dD4KICA8cmVjdCBjbGFzcz0iYm94IiB4PSI0MDAiIHk9IjU2MSIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIxMDAiIHJ4PSI4Ii8+CiAgPHRleHQgY2xhc3M9InQgcCIgeD0iNTQwIiB5PSI1OTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuehruiupOWFs+iKgua6kOaAp+WDteehrDwvdGV4dD4KICA8dGV4dCBjbGFzcz0idCB3IiB4PSI1NDAiIHk9IjYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5rOo5bCE6K+V6aqM5Y+v5biu5Yqp5a6a5L2N55eb5rqQPC90ZXh0PgogIDxyZWN0IGNsYXNzPSJib3giIHg9Ijc2NCIgeT0iNTYxIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjEwMCIgcng9IjgiLz4KICA8dGV4dCBjbGFzcz0idCBwIiB4PSI5MDQiIHk9IjU5OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5aSN546w55eH54q25q+U55a855eb5pu06YeN6KaBPC90ZXh0PgogIDx0ZXh0IGNsYXNzPSJ0IHciIHg9IjkwNCIgeT0iNjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5NUkEvQ1Qg57uT5ZCI6aqo57y65o2f6K+E5LywPC90ZXh0Pgo8L3N2Zz4K" alt="肩痛初诊鉴别流程" />
+          </div>
+          <div class="flow-panel">
+            <h3>专家查房顺序</h3>
+            <ol class="round-list">
+              <li><strong>先问功能目标：</strong>痛点不等于病因，先明确患者被限制的动作。</li>
+              <li><strong>先看主动，再看被动：</strong>主动受限而被动基本保留，优先考虑肩袖/疼痛抑制；二者均受限，考虑冻结肩或关节病变。</li>
+              <li><strong>先排颈源和神经：</strong>麻木、放射至肘下、反射或肌力节段异常时，不把肩 MRI 当作唯一解释。</li>
+              <li><strong>特殊试验成组解释：</strong>单个试验很少足以定性，组合、年龄、外伤机制和影像一致时才提高诊断信心。</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section id="evidence" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Evidence Translation</p>
+          <h2>临床证据解释器</h2>
+        </div>
+        <div class="evidence-layout">
+          <div class="calculator">
+            <h3>选择试验，代入临床情境</h3>
+            <div class="evidence-controls">
+              <label>
+                <span>解剖区域</span>
+                <select id="evidenceRegionSelect">
+                  <option value="all">全部区域</option>
+                </select>
+              </label>
+              <label>
+                <span>具体试验</span>
+                <select id="evidenceTestSelect"></select>
+              </label>
+            </div>
+            <label>
+              <span>临床情境</span>
+              <select id="scenarioSelect">
+                <option value="15">低怀疑：症状不典型 / 影像可能偶然发现</option>
+                <option value="35" selected>中等怀疑：病史与查体部分吻合</option>
+                <option value="65">高怀疑：典型病史 + 年龄/机制吻合</option>
+              </select>
+            </label>
+            <label>
+              <span>检查前概率微调</span>
+              <input id="preProb" type="range" min="1" max="95" value="35" />
+            </label>
+            <output id="preProbLabel">35%</output>
+            <div class="metric-grid">
+              <div>
+                <small>阳性推动力</small>
+                <strong id="positiveStrength">中等</strong>
+              </div>
+              <div>
+                <small>阴性排除力</small>
+                <strong id="negativeStrength">有限</strong>
+              </div>
+              <div>
+                <small>证据口径</small>
+                <strong id="evidenceGrade">适合成组使用</strong>
+              </div>
+            </div>
+            <div class="prob-grid">
+              <div>
+                <small>阳性后概率</small>
+                <strong id="postPositive">61%</strong>
+              </div>
+              <div>
+                <small>阴性后概率</small>
+                <strong id="postNegative">13%</strong>
+              </div>
+            </div>
+            <p id="evidenceAdvice" class="clinical-advice"></p>
+          </div>
+          <div class="evidence-note">
+            <h3>更贴近临床的读法</h3>
+            <p>
+              不先估计“验前概率”，LR 很容易变成纸面数字。这里把患者先放进低、中、高怀疑情境，再看某个试验阳性或阴性会不会真正改变下一步：继续查体成组验证、安排影像、做定位注射，还是回到颈源/神经/关节源重新分层。
+            </p>
+            <p>
+              LR 可以简单理解为“这个结果让诊断怀疑度移动多少”。本页不要求你手算 LR，只把它转成更直观的阳性后概率、阴性后概率，以及“阳性推动力 / 阴性排除力”。
+            </p>
+            <div class="source-list">
+              <a href="https://bmcmusculoskeletdisord.biomedcentral.com/articles/10.1186/s12891-017-1400-0">Gismervik 2017 systematic review</a>
+              <a href="https://jamaevidence.mhmedical.com/content.aspx?Sectionid=68722705&bookid=845">JAMA Rational Clinical Examination: Rotator Cuff</a>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/23850309/">van Kampen 2013 anterior instability</a>
+              <a href="https://journals.sagepub.com/doi/10.1177/23259671211042011">Lädermann 2021 subscapularis meta-analysis</a>
+              <a href="https://journals.sagepub.com/doi/10.1177/03635465221100977">Dean 2023 SLAP meta-analysis</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>张瑞华医生 Dr. Jason Zhang</p>
+      <p>用于专业学习和临床思维训练，不能替代完整病史、体格检查、影像评估和本地医疗规范。</p>
+    </footer>
+
+    <dialog id="testDialog" class="dialog">
+      <button class="close" type="button" aria-label="关闭">×</button>
+      <article id="dialogContent"></article>
+    </dialog>
+    <script>
+const regionInfo = [
+  {
+    name: "肩袖-冈上/冈下/小圆",
+    focus: "外展痛弧、外旋无力、lag sign、假性麻痹与巨大撕裂识别。",
+    traps: ["疼痛抑制可伪装成肌力下降", "Neer/Hawkins 更像筛查而非定性", "老年无症状撕裂常见，影像需回到功能目标解释"]
+  },
+  {
+    name: "肩胛下肌",
+    focus: "内旋力量、Lift-off、Belly-press、Bear hug，重点判断前上方肩袖病变。",
+    traps: ["高特异度、低敏感度：阴性不能排除", "肘后移或腕屈是代偿", "大胸肌与背阔肌会参与内旋"]
+  },
+  {
+    name: "肱二头肌长头/SLAP",
+    focus: "沟痛、牵拉痛、点击、投掷位疼痛，结合 Speed、Yergason、Upper cut、O'Brien、Biceps load。",
+    traps: ["SLAP 单项试验可靠性有限", "中老年退变性 SLAP 影像阳性不等于症状源", "先分清 bicipital groove pain 与 AC 顶部痛"]
+  },
+  {
+    name: "盂肱不稳/盂唇",
+    focus: "恐惧感、复发脱位、滑脱感、load and shift、apprehension/relocation/surprise、jerk/Kim。",
+    traps: ["阳性标准应是 apprehension 或复现滑脱感，不只是疼痛", "年轻、明确脱位史、突然起病显著提高验前概率", "骨缺损会改变治疗路径"]
+  },
+  {
+    name: "肩锁关节",
+    focus: "顶部局限痛、直接压痛、交叉内收痛、局麻注射后复测。",
+    traps: ["MRI 常见无症状 AC 退变", "交叉内收可因后囊紧张或喙突下撞击而痛", "定位必须在 AC 顶部"]
+  },
+  {
+    name: "肩胛胸廓",
+    focus: "静态位置、动态翼状、SAT/SST 是否改善疼痛或力量。",
+    traps: ["肩胛异常多是负荷与控制问题，不一定是原发诊断", "观察要包含疲劳和重复动作", "别把所有肩痛都归因于肩胛"]
+  },
+  {
+    name: "颈源/神经血管",
+    focus: "Spurling、感觉节段、反射、Deltoid/Trapezius/Rhomboid、TOS 诱发试验。",
+    traps: ["放射至肘下、麻木、反射改变优先排颈源", "TOS 试验假阳性较多，组合才稍有价值", "急性神经血管异常是红旗"]
+  },
+  {
+    name: "活动度/关节源",
+    focus: "主动/被动 ROM 比较、外旋受限、骨擦感、冻结肩与关节炎分层。",
+    traps: ["先看主动，再测被动", "关节源性僵硬常同时限制主动和被动", "疼痛终末感和硬性终末感含义不同"]
+  }
+];
+
+const symptoms = [
+  {
+    title: "夜痛 / 静息痛",
+    path: "肩袖病变、感染/肿瘤红旗、炎症性关节病；先问全身症状和创伤。",
+    tags: ["肩袖", "红旗", "炎症"]
+  },
+  {
+    title: "过头痛 / 60-120°痛弧",
+    path: "肩袖相关痛、肩峰下疼痛综合征、内撞击；用 painful arc、ER resistance、Jobe 成组判断。",
+    tags: ["painful arc", "Jobe", "Hawkins"]
+  },
+  {
+    title: "无力",
+    path: "先区分疼痛抑制和真正肌腱/神经无力；lag sign、drop arm、节段肌力和反射很关键。",
+    tags: ["lag sign", "神经", "肩袖"]
+  },
+  {
+    title: "僵硬",
+    path: "主动和被动 ROM 同时下降时考虑冻结肩、骨关节炎、后囊紧张；外旋受限最有提示价值。",
+    tags: ["ROM", "冻结肩", "关节炎"]
+  },
+  {
+    title: "不稳感 / 脱位史",
+    path: "恐惧感比疼痛更有诊断价值；年轻、突然起病、既往脱位、surprise test 阳性权重最高。",
+    tags: ["apprehension", "relocation", "surprise"]
+  },
+  {
+    title: "点击 / 弹响",
+    path: "有痛点击才更有意义；结合盂唇、肱二头肌、肩胛胸廓和关节炎骨擦感定位。",
+    tags: ["SLAP", "Kim", "crepitus"]
+  },
+  {
+    title: "顶部局限痛",
+    path: "优先定位 AC 关节；压痛、cross-body adduction 和 AC 局麻注射复测形成闭环。",
+    tags: ["AC joint", "cross-body"]
+  },
+  {
+    title: "麻木 / 肘下放射痛",
+    path: "优先排颈椎根性病变、周围神经和 TOS；肩部影像阳性不能解释所有症状。",
+    tags: ["Spurling", "反射", "TOS"]
+  }
+];
+
+const tests = [
+  {
+    name: "Painful Arc Test",
+    zh: "疼痛弧试验",
+    region: "肩袖-冈上/冈下/小圆",
+    target: "肩袖相关痛 / 肩峰下疼痛",
+    sensitivity: 53,
+    specificity: 76,
+    lrPlus: 3.7,
+    lrMinus: 0.36,
+    evidence: "PDF 表 3-4；JAMA Rational Clinical Examination 报告 LR",
+    grade: "中等：适合成组使用",
+    steps: ["患者站立或坐位，肘伸直。", "在肩胛平面主动上举或从上举位缓慢下降。", "保持中立旋转，避免外旋绕开大结节。", "60-100°或60-120°区间复现疼痛为阳性。"],
+    positive: "支持肩袖相关痛或肩峰下疼痛；若伴外旋无力、drop arm 或 lag sign，撕裂概率增加。",
+    tips: ["外旋代偿会减少疼痛，需观察拇指方向。", "疼痛弧不是“撕裂专属”，也可见滑囊炎、钙化性肌腱炎。", "JAMA 数据提示它比 Neer/Hawkins 更能移动概率。"]
+  },
+  {
+    name: "Neer Impingement Sign",
+    zh: "Neer 撞击征",
+    region: "肩袖-冈上/冈下/小圆",
+    target: "肩峰下疼痛筛查",
+    sensitivity: 72,
+    specificity: 60,
+    evidence: "PDF 表 3-4",
+    grade: "低-中：敏感性尚可，特异性有限",
+    steps: ["检查者稳定肩胛骨。", "被动将患臂前屈至终末位。", "观察是否复现前外侧肩痛。"],
+    positive: "提示肩峰下结构受压，但不能单独区分滑囊、肩袖、肱二头肌或大结节接触。",
+    tips: ["适合作为筛查，不适合单独定性。", "可结合肩峰下注射后复测定位痛源。", "终末位疼痛也可能来自关节僵硬。"]
+  },
+  {
+    name: "Hawkins-Kennedy Test",
+    zh: "Hawkins-Kennedy 试验",
+    region: "肩袖-冈上/冈下/小圆",
+    target: "肩峰下疼痛筛查",
+    sensitivity: 80,
+    specificity: 56,
+    evidence: "PDF 表 3-4；Gismervik 2017 对撞击综合征 pooled DOR 较高",
+    grade: "低-中：更多是症状复现",
+    steps: ["肩前屈90°、肘屈90°。", "检查者稳定肘部并被动内旋肩关节。", "复现典型肩前外侧痛为阳性。"],
+    positive: "支持肩峰下疼痛或肩袖相关痛，但特异性不足。",
+    tips: ["疼痛位置要问清楚，AC 顶部痛或后方痛不按肩峰下解释。", "强行内旋会让紧张患者假阳性。", "需与主动功能和力量试验组合。"]
+  },
+  {
+    name: "Jobe-Yocum / Empty Can",
+    zh: "Jobe-Yocum / 空罐试验",
+    region: "肩袖-冈上/冈下/小圆",
+    target: "冈上肌病变",
+    sensitivity: 74,
+    specificity: 30,
+    evidence: "PDF 表 3-4；Gismervik 2017 提示 supraspinatus/Jobe 对全层撕裂 DOR 较高但研究异质",
+    grade: "低-中：疼痛阳性特异性差",
+    steps: ["肩胛平面上举90°。", "内旋使拇指向下。", "检查者向下压腕部，患者抵抗。", "比较疼痛和力量，再可外旋位重复。"],
+    positive: "疼痛支持冈上肌/肩峰下痛；真正无力更提示结构性损伤。",
+    tips: ["三角肌和胸大肌会参与，解释时看疼痛还是无力。", "外旋位疼痛减少更支持肩峰下机制。", "疼痛导致的抑制不能等同于肌腱断裂。"]
+  },
+  {
+    name: "External Rotation Lag Sign",
+    zh: "外旋滞后征",
+    region: "肩袖-冈上/冈下/小圆",
+    target: "冈下肌/小圆肌全层撕裂",
+    lrPlus: 7.2,
+    lrMinus: 0.57,
+    evidence: "JAMA Rational Clinical Examination",
+    grade: "中等：阳性较有力，阴性不能排除",
+    steps: ["肘屈90°，肩轻度外展。", "被动将肩外旋至接近最大位。", "让患者主动维持该位置，检查者松手。", "无法维持并回落为阳性。"],
+    positive: "支持后上方肩袖显著撕裂，尤其伴外旋无力和萎缩。",
+    tips: ["不要把疼痛不愿配合误判为 lag。", "与 contralateral side 比较。", "巨大撕裂、脂肪浸润和小圆肌受累时意义更大。"]
+  },
+  {
+    name: "Drop Arm Test",
+    zh: "落臂试验",
+    region: "肩袖-冈上/冈下/小圆",
+    target: "全层肩袖撕裂",
+    lrPlus: 3.3,
+    lrMinus: 0.82,
+    evidence: "JAMA Rational Clinical Examination；PDF 编辑评论强调与 ER weakness、painful arc 成组",
+    grade: "中等：阳性支持，阴性很弱",
+    steps: ["被动将患臂外展至90°以上。", "要求患者缓慢主动下降。", "出现突然坠落或无法控制下降为阳性。"],
+    positive: "支持全层肩袖撕裂；三联阳性时概率显著上升。",
+    tips: ["疼痛恐惧会影响控制，必要时先镇痛或注射后复测。", "阴性不能排除撕裂。", "观察耸肩代偿和躯干侧屈。"]
+  },
+  {
+    name: "Lift-off Test",
+    zh: "Lift-off 试验",
+    region: "肩胛下肌",
+    target: "肩胛下肌撕裂",
+    sensitivity: 12,
+    specificity: 100,
+    evidence: "PDF 表 3-3；Lädermann 2021 综述提示特异度高、敏感度低",
+    grade: "中等：阳性强，阴性弱",
+    steps: ["患者手背置于腰背部。", "让患者主动将手离开背部。", "也可由检查者将手抬离背部后让其维持。"],
+    positive: "无法离背或无法维持，提示肩胛下肌功能不全。",
+    tips: ["内旋受限会让试验无法完成，不等于阳性。", "注意肘伸、躯干旋转等代偿。", "小撕裂敏感性很低。"]
+  },
+  {
+    name: "Belly-press / Napoleon",
+    zh: "腹压 / Napoleon 试验",
+    region: "肩胛下肌",
+    target: "肩胛下肌撕裂",
+    sensitivity: 28,
+    specificity: 99,
+    evidence: "PDF 表 3-3；Lädermann 2021",
+    grade: "中等：高特异、低敏感",
+    steps: ["手掌压于腹部，腕保持中立。", "肘位于躯干前方。", "患者向腹部施压，观察肘是否后移或腕是否屈曲。"],
+    positive: "腕屈曲、肘后落或不能维持压力，提示肩胛下肌受损。",
+    tips: ["腕屈是典型代偿。", "Napoleon 变式更适合内旋受限者。", "结合 bear hug 增加检出。"]
+  },
+  {
+    name: "Bear Hug Test",
+    zh: "熊抱试验",
+    region: "肩胛下肌",
+    target: "肩胛下肌撕裂",
+    sensitivity: 19,
+    specificity: 99,
+    evidence: "PDF 表 3-3；Lädermann 2021 pooled sensitivity 最高但仍 <0.60",
+    grade: "中等：阳性支持",
+    steps: ["患手置于对侧肩上。", "检查者试图将手从肩上抬起。", "患者抵抗外旋/抬离力量。"],
+    positive: "不能抵抗手被抬离，提示肩胛下肌功能不全。",
+    tips: ["疼痛会降低抵抗，需比较对侧。", "上部肩胛下肌病变可能更敏感。", "阴性不能排除。"]
+  },
+  {
+    name: "Apprehension Test",
+    zh: "前方恐惧试验",
+    region: "盂肱不稳/盂唇",
+    target: "前方不稳",
+    sensitivity: 98,
+    specificity: 71.6,
+    evidence: "PDF 表 3-2；van Kampen 2013 强调与病史组合",
+    grade: "中等：标准必须是恐惧感",
+    steps: ["仰卧位，肩外展90°、肘屈90°。", "缓慢增加外旋。", "询问是否感觉快要脱位，而不只是否疼痛。"],
+    positive: "复现前方脱位恐惧或保护性肌收缩，支持前方不稳。",
+    tips: ["疼痛阳性会显著降低特异性。", "不要粗暴推到终末位。", "与 relocation 和 surprise 形成闭环。"]
+  },
+  {
+    name: "Relocation Test",
+    zh: "复位试验",
+    region: "盂肱不稳/盂唇",
+    target: "前方不稳",
+    sensitivity: 97,
+    specificity: 78,
+    evidence: "PDF 表 3-2",
+    grade: "中等：需接在 apprehension 后",
+    steps: ["在 apprehension 阳性位置。", "对肱骨近端施加向后力量。", "恐惧感减轻为阳性。"],
+    positive: "支持前方不稳；若疼痛加重，需考虑后上盂唇/内撞击。",
+    tips: ["观察是恐惧缓解还是疼痛变化。", "后向力过大可诱发其他疼痛。", "记录角度和症状。"]
+  },
+  {
+    name: "Surprise / Release Test",
+    zh: "惊恐 / 释放试验",
+    region: "盂肱不稳/盂唇",
+    target: "前方不稳",
+    sensitivity: 92,
+    specificity: 84,
+    evidence: "PDF 表 3-2；van Kampen 2013 认为 release test 是重要预测因子",
+    grade: "中等-较高：需谨慎操作",
+    steps: ["完成 relocation 后维持外展外旋。", "突然移除向后的复位力。", "恐惧感再现为阳性。"],
+    positive: "强烈支持前方不稳，尤其结合年轻、脱位史、突然起病。",
+    tips: ["存在诱发脱位风险，必要时避免。", "不要在急性疼痛或极度紧张患者强做。", "阳性价值高于单纯疼痛。"]
+  },
+  {
+    name: "Load and Shift Test",
+    zh: "加载移位试验",
+    region: "盂肱不稳/盂唇",
+    target: "前/后方松弛度",
+    sensitivity: 72,
+    specificity: 90,
+    evidence: "PDF 表 3-2",
+    grade: "中等：依赖操作者经验",
+    steps: ["坐位或仰卧，稳定肩胛。", "将肱骨头压向盂窝中心。", "向前、向后平移并分级。", "与对侧和症状复现比较。"],
+    positive: "过度平移或复现症状提示不稳方向。",
+    tips: ["松弛不等于症状性不稳。", "记录方向、等级和终末感。", "多向松弛需结合全身关节松弛。"]
+  },
+  {
+    name: "Jerk Test",
+    zh: "Jerk 试验",
+    region: "盂肱不稳/盂唇",
+    target: "后方不稳 / 后下盂唇",
+    evidence: "PDF 描述；后方盂唇证据多来自单中心研究",
+    grade: "低-中：阳性需结合病史",
+    steps: ["肩前屈90°、内旋90°并轻度内收。", "沿肱骨轴向加载并施加后向力。", "保持加载同时逐渐外展。", "出现后方痛性 clunk 或复位感为阳性。"],
+    positive: "支持后方不稳或后下盂唇病变。",
+    tips: ["痛性 clunk 比单纯疼痛更有意义。", "投掷/推举运动员要结合诱发动作。", "Kim test 联合可提高敏感性。"]
+  },
+  {
+    name: "Kim Test",
+    zh: "Kim 试验",
+    region: "盂肱不稳/盂唇",
+    target: "后下盂唇损伤",
+    sensitivity: 80,
+    specificity: 94,
+    evidence: "PDF 文本引用原作者研究",
+    grade: "低-中：研究有限",
+    steps: ["坐位，肩前屈90°、内旋90°。", "一手施加轴向加载，另一手对近端肱骨施加后向力。", "将肱骨再前屈约45°。", "后方深部疼痛为阳性。"],
+    positive: "支持后下盂唇损伤；与 jerk 联合可提高检出。",
+    tips: ["证据主要来自发明者研究，外部验证有限。", "疼痛位置必须是后方深部。", "避免与肩袖后方痛混淆。"]
+  },
+  {
+    name: "Cross-body Adduction",
+    zh: "交叉内收试验",
+    region: "肩锁关节",
+    target: "AC 关节痛",
+    evidence: "PDF 描述；直接压痛敏感但不特异，局麻复测价值高",
+    grade: "低-中：定位依赖疼痛部位",
+    steps: ["肩前屈90°。", "被动将手臂水平内收至对侧肩。", "询问疼痛是否精确位于 AC 顶部。"],
+    positive: "AC 顶部疼痛支持 AC 关节病变；可用 AC 局麻注射后复测确认。",
+    tips: ["后肩痛可能来自后囊紧张。", "前肩痛可来自喙突下撞击。", "顶点局限痛最关键。"]
+  },
+  {
+    name: "Speed's Test",
+    zh: "Speed 试验",
+    region: "肱二头肌长头/SLAP",
+    target: "肱二头肌长头 / SLAP",
+    sensitivity: 54,
+    specificity: 87,
+    evidence: "PDF 表 3-5",
+    grade: "低-中：目标结构不唯一",
+    steps: ["肘伸直、前臂旋后。", "肩前屈60-90°。", "检查者向下压腕部，患者抵抗。", "前肩或肱二头肌沟痛为阳性。"],
+    positive: "支持肱二头肌长头或上盂唇复合体病变。",
+    tips: ["肩袖痛也可阳性。", "疼痛必须定位到前肩/沟内。", "结合沟压痛和 Upper cut 更有用。"]
+  },
+  {
+    name: "Yergason's Test",
+    zh: "Yergason 试验",
+    region: "肱二头肌长头/SLAP",
+    target: "肱二头肌长头",
+    sensitivity: 32,
+    specificity: 78,
+    evidence: "PDF 表 3-5；Gismervik 2017 在 SLAP 类别中排名较靠前",
+    grade: "低：单项影响有限",
+    steps: ["臂贴身，肘屈90°，前臂旋前。", "患者抵抗检查者阻力做旋后。", "前肩或肱二头肌沟痛为阳性。"],
+    positive: "提示肱二头肌长头腱鞘或稳定结构问题。",
+    tips: ["敏感性低，阴性意义有限。", "可同时触诊肱二头肌沟是否弹响。", "不要把肘部疼痛算作阳性。"]
+  },
+  {
+    name: "Upper Cut Test",
+    zh: "上勾拳试验",
+    region: "肱二头肌长头/SLAP",
+    target: "肱二头肌长头",
+    sensitivity: 73,
+    specificity: 78,
+    evidence: "PDF 表 3-5",
+    grade: "中等：比传统 Speed/Yergason 更均衡",
+    steps: ["肩中立位，前臂旋后，握拳。", "患者尝试快速将拳带向下巴。", "检查者在拳部施加阻力。", "前肩痛或痛性弹响为阳性。"],
+    positive: "支持肱二头肌长头病变。",
+    tips: ["动作要像短促 upper cut，而不是慢速屈肘。", "前肩定位比笼统疼痛重要。", "与 Speed、沟压痛形成小组合。"]
+  },
+  {
+    name: "O'Brien Active Compression",
+    zh: "O'Brien 主动压缩试验",
+    region: "肱二头肌长头/SLAP",
+    target: "SLAP / AC 鉴别",
+    sensitivity: 85,
+    specificity: 10,
+    evidence: "PDF 表 3-6；Dean 2023 指出组合使用优于单项",
+    grade: "低：单项特异性很差",
+    steps: ["肩前屈90°，水平内收约15°。", "拇指向下，抵抗向下压力。", "再旋后外旋重复。", "第一步疼痛、第二步减轻为阳性；按疼痛位置解释。"],
+    positive: "深部关节痛考虑 SLAP；AC 顶部痛考虑 AC 关节。",
+    tips: ["这个试验最容易被过度解读。", "PDF 表中特异性很低，不能单独诊断 SLAP。", "先问疼痛是在深部、前方沟内还是 AC 顶部。"]
+  },
+  {
+    name: "Anterior Slide Test",
+    zh: "前滑试验",
+    region: "肱二头肌长头/SLAP",
+    target: "SLAP",
+    sensitivity: 48,
+    specificity: 82,
+    evidence: "PDF 表 3-6；Dean 2023 中与 Yergason 组合特异性较高",
+    grade: "低-中：阳性比阴性更有意义",
+    steps: ["患者手置髋部或腰部。", "检查者从肘部施加向前上方力量。", "患者抵抗肩部前上滑动。", "前上肩深痛或弹响为阳性。"],
+    positive: "支持上盂唇-肱二头肌锚复合体病变。",
+    tips: ["疼痛位置和机械感比单纯酸痛重要。", "特异性相对高，敏感性不足。", "投掷运动员需结合 peel-back 机制。"]
+  },
+  {
+    name: "Biceps Load I",
+    zh: "Biceps Load I",
+    region: "肱二头肌长头/SLAP",
+    target: "SLAP，尤其伴不稳",
+    sensitivity: 91,
+    specificity: 97,
+    evidence: "PDF 表 3-6；后续研究复制性需谨慎",
+    grade: "低-中：原始数据好，外部验证需保守",
+    steps: ["仰卧，肩外展90°、外旋至恐惧位。", "肘屈90°，前臂旋后。", "患者抵抗肘伸展。", "疼痛加重或恐惧变化按 SLAP/不稳解释。"],
+    positive: "支持 SLAP，尤其与前方不稳情境相关。",
+    tips: ["原始诊断表现很好，但系统综述提醒复制性问题。", "不适合急性不稳极痛患者强做。", "记录是否是深部痛而非单纯恐惧。"]
+  },
+  {
+    name: "Biceps Load II",
+    zh: "Biceps Load II",
+    region: "肱二头肌长头/SLAP",
+    target: "SLAP",
+    sensitivity: 67,
+    specificity: 57,
+    evidence: "PDF 表 3-6",
+    grade: "低：单独价值有限",
+    steps: ["仰卧，肩外展120°，最大外旋。", "肘屈90°，前臂旋后。", "患者抵抗肘伸展。", "深部肩痛加重为阳性。"],
+    positive: "提示上盂唇-肱二头肌锚受牵拉。",
+    tips: ["敏感性和特异性均不稳定。", "投掷者内撞击也可疼痛。", "不要单项决定手术适应证。"]
+  },
+  {
+    name: "Scapular Assistance Test",
+    zh: "肩胛辅助试验",
+    region: "肩胛胸廓",
+    target: "肩胛运动障碍对疼痛的贡献",
+    evidence: "PDF 描述；肩胛试验诊断特定病理证据有限",
+    grade: "低：更适合指导康复思路",
+    steps: ["患者主动上举，记录疼痛和活动范围。", "检查者辅助肩胛上旋和后倾。", "再次上举并比较疼痛和 ROM。"],
+    positive: "辅助后疼痛减轻或上举改善，提示肩胛控制是可干预因素。",
+    tips: ["阳性不是具体结构诊断。", "适合制定康复重点。", "疲劳后重复观察更接近运动场景。"]
+  },
+  {
+    name: "Spurling Test",
+    zh: "Spurling 试验",
+    region: "颈源/神经血管",
+    target: "颈椎神经根性疼痛",
+    evidence: "PDF 描述颈源鉴别；需结合感觉、反射、肌力",
+    grade: "中等：肩痛鉴别必做项之一",
+    steps: ["颈椎后伸并向患侧旋转/侧屈。", "施加轻柔轴向压力。", "复现向上肢放射的神经根痛为阳性。"],
+    positive: "支持颈源性神经根受刺激，尤其症状放射至肘下。",
+    tips: ["局部颈痛不等于阳性。", "有脊髓病、创伤或严重神经缺损时避免诱发。", "与 C5-T1 感觉和反射一起解释。"]
+  },
+  {
+    name: "Adson / Roos / Wright",
+    zh: "TOS 诱发试验组",
+    region: "颈源/神经血管",
+    target: "胸廓出口综合征筛查",
+    sensitivity: 79,
+    specificity: 76,
+    evidence: "PDF 表 3-11；Adson 单项数据，组合特异性可提高",
+    grade: "低-中：假阳性较多",
+    steps: ["Adson：肩伸展外旋，头转向患侧，触诊桡动脉。", "Roos：双肩外展90°、肘屈90°，开合手3分钟。", "Wright：过度外展外旋并观察脉搏/症状。"],
+    positive: "症状复现、脉搏明显下降或不能完成动作时支持 TOS 可能。",
+    tips: ["单纯脉搏变化在健康人也可出现。", "症状复现比脉搏变化更重要。", "Adson+Wright 特异性高但敏感性下降。"]
+  }
+];
+
+const regions = regionInfo.map((region) => region.name);
+let selectedEvidenceIndex = 0;
+
+function calcLr(test) {
+  if (test.lrPlus && test.lrMinus) return { plus: test.lrPlus, minus: test.lrMinus };
+  if (typeof test.sensitivity !== "number" || typeof test.specificity !== "number") return { plus: null, minus: null };
+  const sens = test.sensitivity / 100;
+  const spec = test.specificity / 100;
+  const plus = spec === 1 ? Infinity : sens / (1 - spec);
+  const minus = spec === 0 ? null : (1 - sens) / spec;
+  return { plus, minus };
+}
+
+function fmt(value, suffix = "") {
+  if (value === Infinity) return "∞";
+  if (value === null || value === undefined || Number.isNaN(value)) return "—";
+  if (typeof value === "number") {
+    const rounded = value >= 10 ? value.toFixed(0) : value.toFixed(2).replace(/0$/, "").replace(/\.0$/, "");
+    return `${rounded}${suffix}`;
+  }
+  return value;
+}
+
+function populateFilters() {
+  const regionFilter = document.querySelector("#regionFilter");
+  regions.forEach((region) => regionFilter.append(new Option(region, region)));
+  updateTargetOptions();
+  const evidenceRegion = document.querySelector("#evidenceRegionSelect");
+  regions.forEach((region) => evidenceRegion.append(new Option(region, region)));
+  updateEvidenceTestOptions();
+}
+
+function availableTargets(region = document.querySelector("#regionFilter").value) {
+  return [...new Set(tests.filter((test) => region === "all" || test.region === region).map((test) => test.target))].sort();
+}
+
+function updateTargetOptions() {
+  const region = document.querySelector("#regionFilter").value;
+  const targetFilter = document.querySelector("#targetFilter");
+  const current = targetFilter.value;
+  const options = availableTargets(region);
+  targetFilter.innerHTML = "";
+  targetFilter.append(new Option(region === "all" ? "全部目标" : "该区域全部目标", "all"));
+  options.forEach((target) => targetFilter.append(new Option(target, target)));
+  targetFilter.value = current !== "all" && options.includes(current) ? current : "all";
+}
+
+function testsForEvidenceRegion(region = document.querySelector("#evidenceRegionSelect").value) {
+  return tests.filter((test) => region === "all" || test.region === region);
+}
+
+function updateEvidenceTestOptions(preferredIndex = selectedEvidenceIndex) {
+  const select = document.querySelector("#evidenceTestSelect");
+  const options = testsForEvidenceRegion();
+  const preferred = tests[preferredIndex];
+  select.innerHTML = "";
+  options.forEach((test) => {
+    const index = tests.indexOf(test);
+    select.append(new Option(`${test.zh} / ${test.name}`, String(index)));
+  });
+  if (preferred && options.includes(preferred)) {
+    select.value = String(preferredIndex);
+  } else {
+    selectedEvidenceIndex = tests.indexOf(options[0] || tests[0]);
+    select.value = String(selectedEvidenceIndex);
+  }
+}
+
+function currentQuery() {
+  return document.querySelector("#searchInput").value.trim().toLowerCase();
+}
+
+function textMatches(parts, query = currentQuery()) {
+  if (!query) return true;
+  return parts.join(" ").toLowerCase().includes(query);
+}
+
+function normalizeText(value) {
+  return String(value || "").replace(/\s+/g, "").toLowerCase();
+}
+
+function targetMatches(test, selectedTarget = document.querySelector("#targetFilter").value) {
+  if (selectedTarget === "all") return true;
+  return normalizeText(test.target) === normalizeText(selectedTarget);
+}
+
+function renderSymptoms() {
+  const root = document.querySelector("#symptomMatrix");
+  const query = currentQuery();
+  const visible = symptoms.filter((item) => textMatches([item.title, item.path, ...(item.tags || [])], query));
+  if (!visible.length) {
+    root.innerHTML = `<div class="empty">症状入口里没有匹配项。</div>`;
+    return;
+  }
+  root.innerHTML = visible
+    .map(
+      (item) => `
+      <article class="info-card">
+        <h3>${item.title}</h3>
+        <p>${item.path}</p>
+        <div class="tag-row">${item.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
+      </article>`
+    )
+    .join("");
+}
+
+function renderRegions() {
+  const root = document.querySelector("#regionGrid");
+  const query = currentQuery();
+  const selectedRegion = document.querySelector("#regionFilter").value;
+  const selectedTarget = document.querySelector("#targetFilter").value;
+  const visible = regionInfo
+    .map((region) => {
+      const regionTests = tests.filter((test) => test.region === region.name);
+      const filteredTests = regionTests.filter((test) => {
+        const targetOk = targetMatches(test, selectedTarget);
+        const testQueryOk = textMatches([test.name, test.zh, test.region, test.target, test.positive, test.evidence, ...(test.tips || [])], query);
+        return targetOk && testQueryOk;
+      });
+      const regionQueryOk = textMatches([region.name, region.focus, ...(region.traps || []), ...regionTests.flatMap((test) => [test.name, test.zh, test.target])], query);
+      const regionOk = selectedRegion === "all" || selectedRegion === region.name;
+      if (!regionOk || (!regionQueryOk && !filteredTests.length)) return null;
+      const displayTests = filteredTests.length ? filteredTests : regionTests.filter((test) => targetMatches(test, selectedTarget));
+      return `
+        <article class="region-card">
+          <h3>${region.name}</h3>
+          <p>${region.focus}</p>
+          <details class="region-tests">
+            <summary class="pill">${displayTests.length} 个试验 · 点击展开</summary>
+            <div class="region-test-list">
+              ${displayTests
+                .map((test) => {
+                  const index = tests.indexOf(test);
+                  return `<button class="region-test-button" type="button" data-open="${index}">
+                    <strong>${test.zh}</strong>
+                    <small>${test.name} · ${test.target}</small>
+                  </button>`;
+                })
+                .join("")}
+            </div>
+          </details>
+          <div class="tag-row">${region.traps.map((trap) => `<span class="tag">${trap}</span>`).join("")}</div>
+        </article>`;
+    })
+    .filter(Boolean);
+  root.innerHTML = visible.length ? visible.join("") : `<div class="empty">解剖区域里没有匹配项。</div>`;
+}
+
+function matchesFilters(test) {
+  const query = currentQuery();
+  const region = document.querySelector("#regionFilter").value;
+  const haystack = [test.name, test.zh, test.region, test.target, test.positive, test.evidence, ...(test.tips || [])]
+    .join(" ")
+    .toLowerCase();
+  return (!query || haystack.includes(query)) && (region === "all" || test.region === region) && targetMatches(test);
+}
+
+function renderTests() {
+  const root = document.querySelector("#testCards");
+  const visible = tests.filter(matchesFilters);
+  document.querySelector("#resultCount").textContent = `${visible.length} 项`;
+  if (!visible.length) {
+    root.innerHTML = `<div class="empty">没有找到匹配的试验。试试输入英文名、解剖结构或症状关键词。</div>`;
+    return;
+  }
+  root.innerHTML = visible
+    .map((test, index) => {
+      const lr = calcLr(test);
+      const globalIndex = tests.indexOf(test);
+      return `
+        <article class="test-card">
+          <header>
+            <div>
+              <p class="eyebrow">${test.region}</p>
+              <h3>${test.zh}<br /><small>${test.name}</small></h3>
+            </div>
+            <span class="pill">${test.target}</span>
+          </header>
+          <p>${test.positive}</p>
+          <div class="score" aria-label="诊断性能">
+            <div><small>Sens</small><strong>${fmt(test.sensitivity, "%")}</strong></div>
+            <div><small>Spec</small><strong>${fmt(test.specificity, "%")}</strong></div>
+            <div><small>LR+</small><strong>${fmt(lr.plus)}</strong></div>
+            <div><small>LR-</small><strong>${fmt(lr.minus)}</strong></div>
+          </div>
+          <span class="evidence-badge">${test.grade}</span>
+          <div class="card-actions">
+            <button class="mini-button" type="button" data-open="${globalIndex}">分步说明</button>
+            <button class="mini-button secondary" type="button" data-lr="${globalIndex}">用于判断</button>
+          </div>
+        </article>`;
+    })
+    .join("");
+}
+
+function renderDialog(index) {
+  const test = tests[index];
+  const lr = calcLr(test);
+  const content = document.querySelector("#dialogContent");
+  content.innerHTML = `
+    <p class="eyebrow">${test.region} · ${test.target}</p>
+    <h2>${test.zh}</h2>
+    <p><strong>${test.name}</strong></p>
+    <div class="dialog-grid">
+      <section>
+        <h3>视频式分步说明</h3>
+        <ol class="step-list">${test.steps.map((step) => `<li>${step}</li>`).join("")}</ol>
+      </section>
+      <section>
+        <h3>阳性结果意味着什么</h3>
+        <p>${test.positive}</p>
+        <div class="score">
+          <div><small>Sens</small><strong>${fmt(test.sensitivity, "%")}</strong></div>
+          <div><small>Spec</small><strong>${fmt(test.specificity, "%")}</strong></div>
+          <div><small>LR+</small><strong>${fmt(lr.plus)}</strong></div>
+          <div><small>LR-</small><strong>${fmt(lr.minus)}</strong></div>
+        </div>
+      </section>
+      <section>
+        <h3>专家提醒</h3>
+        <ul class="expert-list">${test.tips.map((tip) => `<li>${tip}</li>`).join("")}</ul>
+      </section>
+      <section>
+        <h3>证据来源</h3>
+        <p>${test.evidence}</p>
+        <span class="evidence-badge">${test.grade}</span>
+      </section>
+    </div>`;
+  document.querySelector("#testDialog").showModal();
+}
+
+function probabilityFromLr(pre, lr) {
+  if (lr === Infinity) return 1;
+  const odds = pre / (1 - pre);
+  const postOdds = odds * lr;
+  return postOdds / (1 + postOdds);
+}
+
+function updateCalculator() {
+  const test = tests[selectedEvidenceIndex] || tests[0];
+  const lr = calcLr(test);
+  const pre = Number(document.querySelector("#preProb").value) / 100;
+  document.querySelector("#preProbLabel").textContent = `${Math.round(pre * 100)}%`;
+  document.querySelector("#positiveStrength").textContent = strengthLabel(lr.plus, "positive");
+  document.querySelector("#negativeStrength").textContent = strengthLabel(lr.minus, "negative");
+  document.querySelector("#evidenceGrade").textContent = shortGrade(test.grade);
+  const hasQuant = typeof lr.plus === "number" && typeof lr.minus === "number" && !Number.isNaN(lr.plus) && !Number.isNaN(lr.minus);
+  if (!hasQuant) {
+    document.querySelector("#postPositive").textContent = "不适用";
+    document.querySelector("#postNegative").textContent = "不适用";
+    document.querySelector("#evidenceAdvice").textContent = `${test.zh} 缺少足够稳定的敏感度/特异度数据，不适合硬算概率。它更适合用于定位痛源、复现动作症状，或作为成组查体中的一环。`;
+    return;
+  }
+  const postPositive = probabilityFromLr(pre, lr.plus);
+  const postNegative = probabilityFromLr(pre, lr.minus);
+  document.querySelector("#postPositive").textContent = `${Math.round(postPositive * 100)}%`;
+  document.querySelector("#postNegative").textContent = `${Math.round(postNegative * 100)}%`;
+  document.querySelector("#evidenceAdvice").textContent = clinicalAdvice(test, pre, postPositive, postNegative, lr.plus, lr.minus);
+}
+
+function strengthLabel(value, mode) {
+  if (value === Infinity && mode === "positive") return "很强";
+  if (!Number.isFinite(value)) return "资料不足";
+  if (mode === "positive") {
+    if (value >= 10) return "很强";
+    if (value >= 5) return "较强";
+    if (value >= 2) return "中等";
+    return "有限";
+  }
+  if (value <= 0.1) return "很强";
+  if (value <= 0.2) return "较强";
+  if (value <= 0.5) return "中等";
+  return "有限";
+}
+
+function shortGrade(grade) {
+  return String(grade || "资料有限").split("：")[0];
+}
+
+function clinicalAdvice(test, pre, postPositive, postNegative, lrPositive, lrNegative) {
+  const pos = postPositive * 100;
+  const neg = postNegative * 100;
+  if (!(typeof lrPositive === "number" && typeof lrNegative === "number")) return "这个试验缺少可用 LR，建议只作为定位或动作复现信息，结合成组试验和病史解释。";
+  const prefix = `${test.zh}：`;
+  if (pos >= 70 && neg <= 20) return `${prefix}阳性和阴性都能明显改变判断，适合放在该诊断路径的关键节点。仍要确认阳性标准是否正确，例如不稳试验应看恐惧感或滑脱感，而不只是疼痛。`;
+  if (pos >= 70) return `${prefix}阳性结果会显著推高怀疑度；阴性结果下降有限，不能单独排除。适合用来“支持诊断”，再用同一区域其他试验、影像或定位注射闭环。`;
+  if (neg <= 20) return `${prefix}阴性结果能明显降低怀疑度；阳性结果仍需结合疼痛位置、代偿动作和其他试验确认。`;
+  if (pos - pre * 100 >= 20) return `${prefix}阳性结果有一定增益，但更适合作为成组证据的一部分。若结果和病史不一致，优先重新检查动作质量和疼痛定位。`;
+  return `${prefix}单项结果对决策推动有限。重点看病史、功能受限模式、多个试验是否同向，以及影像或注射是否能解释同一个痛源。`;
+}
+
+function renderAll() {
+  renderSymptoms();
+  renderRegions();
+  renderTests();
+}
+
+function wireEvents() {
+  document.querySelector("#regionFilter").addEventListener("input", () => {
+    updateTargetOptions();
+    renderAll();
+  });
+  ["searchInput", "targetFilter"].forEach((id) => {
+    document.querySelector(`#${id}`).addEventListener("input", renderAll);
+  });
+  document.querySelector("#resetFilters").addEventListener("click", () => {
+    document.querySelector("#searchInput").value = "";
+    document.querySelector("#regionFilter").value = "all";
+    updateTargetOptions();
+    renderAll();
+  });
+  document.querySelector("#regionGrid").addEventListener("click", (event) => {
+    const open = event.target.closest("[data-open]");
+    if (open) renderDialog(Number(open.dataset.open));
+  });
+  document.querySelector("#testCards").addEventListener("click", (event) => {
+    const open = event.target.closest("[data-open]");
+    const lrButton = event.target.closest("[data-lr]");
+    if (open) renderDialog(Number(open.dataset.open));
+    if (lrButton) {
+      const test = tests[Number(lrButton.dataset.lr)];
+      selectedEvidenceIndex = tests.indexOf(test);
+      document.querySelector("#evidenceRegionSelect").value = test.region;
+      updateEvidenceTestOptions(selectedEvidenceIndex);
+      updateCalculator();
+      document.querySelector("#evidence").scrollIntoView({ behavior: "smooth" });
+    }
+  });
+  document.querySelector(".close").addEventListener("click", () => document.querySelector("#testDialog").close());
+  document.querySelector("#evidenceRegionSelect").addEventListener("input", () => {
+    updateEvidenceTestOptions();
+    selectedEvidenceIndex = Number(document.querySelector("#evidenceTestSelect").value);
+    updateCalculator();
+  });
+  document.querySelector("#evidenceTestSelect").addEventListener("input", (event) => {
+    selectedEvidenceIndex = Number(event.target.value);
+    updateCalculator();
+  });
+  document.querySelector("#scenarioSelect").addEventListener("change", (event) => {
+    document.querySelector("#preProb").value = event.target.value;
+    updateCalculator();
+  });
+  ["preProb"].forEach((id) => {
+    document.querySelector(`#${id}`).addEventListener("input", updateCalculator);
+  });
+}
+
+populateFilters();
+renderAll();
+updateCalculator();
+wireEvents();
+
+    </script>
+  </body>
+</html>
